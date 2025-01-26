@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Project Page Template</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      line-height: 1.6;
+      background-color: #f4f4f9;
+      color: #333;
+    }
+    header {
+      background: #333;
+      color: #fff;
+      padding: 20px 0;
+      text-align: center;
+    }
+    header h1 {
+      margin: 0;
+      font-size: 2.5em;
+    }
+    main {
+      max-width: 900px;
+      margin: 20px auto;
+      padding: 20px;
+      background: #fff;
+      border-radius: 8px;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    }
+    section {
+      margin-bottom: 20px;
+    }
+    section h2 {
+      margin-bottom: 10px;
+      font-size: 1.5em;
+      color: #444;
+    }
+    section p, section ul {
+      margin: 10px 0;
+    }
+    section ul {
+      list-style-type: disc;
+      padding-left: 20px;
+    }
+    .media {
+      text-align: center;
+      margin: 20px 0;
+    }
+    .media img, .media video {
+      max-width: 100%;
+      border-radius: 8px;
+    }
+    footer {
+      text-align: center;
+      padding: 10px 0;
+      margin-top: 20px;
+      background: #333;
+      color: #fff;
+      font-size: 0.9em;
+    }
+    a {
+      color: #007BFF;
+      text-decoration: none;
+    }
+    a:hover {
+      text-decoration: underline;
+    }
+  </style>
+</head>
+<body>
+
+<header>
+  <h1>Project Title: Mecanum Wheel Robot</h1>
+</header>
+
+<main>
+  <section>
+    <h2>1. Overview</h2>
+    <p>
+      Built a robot using Mecanum wheels for precise and omnidirectional navigation. Integrated an optical flow sensor for localization, replacing traditional encoders, and employed EKF for real-time state estimation.
+    </p>
+  </section>
+
+  <section>
+    <h2>2. Background and Motivation</h2>
+    <p>
+      The project aimed to explore alternative localization techniques for robots in environments where encoder-based odometry is unreliable.
+    </p>
+  </section>
+
+  <section>
+    <h2>3. Implementation</h2>
+    <p>
+      <strong>Technical Approach:</strong>
+    </p>
+    <ul>
+      <li>Designed the chassis and integrated Mecanum wheels for multi-directional movement.</li>
+      <li>Used ZeroMQ to synchronize data from the optical flow sensor and IMU.</li>
+      <li>Developed Python programs (<code>opticalflow.py</code>, <code>icm20948.py</code>) for high-frequency data acquisition.</li>
+    </ul>
+    <p>
+      <strong>Challenges and Solutions:</strong> Overcame synchronization issues by carefully tuning the data pipeline for real-time updates.
+    </p>
+  </section>
+
+  <section>
+    <h2>4. Results and Outcomes</h2>
+    <ul>
+      <li>Achieved smooth and precise navigation in various directions.</li>
+      <li>Improved localization accuracy by avoiding encoder slip errors.</li>
+    </ul>
+  </section>
+
+  <section class="media">
+    <h2>5. Visual Media</h2>
+    <p>Here’s a demonstration of the robot in action:</p>
+    <img src="robot_image.jpg" alt="Mecanum Wheel Robot">
+    <p>System architecture diagram:</p>
+    <img src="architecture_diagram.jpg" alt="System Architecture">
+  </section>
+
+  <section>
+    <h2>6. Reflection and Future Work</h2>
+    <p>
+      Learned about the complexities of sensor fusion and the importance of synchronization in real-time systems. Future work includes scaling the system for larger robots or drones.
+    </p>
+  </section>
+
+  <section>
+    <h2>7. Links and References</h2>
+    <ul>
+      <li><a href="https://github.com/your-repo" target="_blank">GitHub Repository</a></li>
+      <li><a href="documentation.pdf" target="_blank">Technical Documentation</a></li>
+    </ul>
+  </section>
+</main>
+
+<footer>
+  &copy; 2025 Srikanth Popuri. All rights reserved.
+</footer>
+
+</body>
+</html>
