@@ -1,147 +1,177 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Project Page Template</title>
-  <style>
-    body {
-      font-family: Arial, sans-serif;
-      margin: 0;
-      padding: 0;
-      line-height: 1.6;
-      background-color: #f4f4f9;
-      color: #333;
-    }
-    header {
-      background: #333;
-      color: #fff;
-      padding: 20px 0;
-      text-align: center;
-    }
-    header h1 {
-      margin: 0;
-      font-size: 2.5em;
-    }
-    main {
-      max-width: 900px;
-      margin: 20px auto;
-      padding: 20px;
-      background: #fff;
-      border-radius: 8px;
-      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-    }
-    section {
-      margin-bottom: 20px;
-    }
-    section h2 {
-      margin-bottom: 10px;
-      font-size: 1.5em;
-      color: #444;
-    }
-    section p, section ul {
-      margin: 10px 0;
-    }
-    section ul {
-      list-style-type: disc;
-      padding-left: 20px;
-    }
-    .media {
-      text-align: center;
-      margin: 20px 0;
-    }
-    .media img, .media video {
-      max-width: 100%;
-      border-radius: 8px;
-    }
-    footer {
-      text-align: center;
-      padding: 10px 0;
-      margin-top: 20px;
-      background: #333;
-      color: #fff;
-      font-size: 0.9em;
-    }
-    a {
-      color: #007BFF;
-      text-decoration: none;
-    }
-    a:hover {
-      text-decoration: underline;
-    }
-  </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Multi-View Generation Project</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            margin: 0;
+            padding: 0;
+            background-color: #f9f9f9;
+            color: #333;
+        }
+
+        header {
+            background-color: #4d4d4d;
+            color: white;
+            padding: 20px;
+            text-align: center;
+        }
+
+        main {
+            max-width: 900px;
+            margin: 20px auto;
+            background: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        section {
+            margin-bottom: 20px;
+        }
+        h1{
+            color: #ffffff;
+        }
+
+        h2 {
+            color: #000000;
+        }
+
+        ul {
+            list-style-type: disc;
+            padding-left: 20px;
+        }
+
+        .code {
+            background-color: #f4f4f4;
+            padding: 10px;
+            border-radius: 5px;
+            margin: 10px 0;
+            font-family: monospace;
+            overflow-x: auto;
+        }
+
+        footer {
+            text-align: center;
+            padding: 20px;
+            background-color: #4d4d4d;
+            color: white;
+            margin-top: 20px;
+        }
+    </style>
 </head>
+
 <body>
+    <header>
+        <h1>Multi-View Generation from a Single Image</h1>
+        <p>Leveraging 3D Reconstruction and Inpainting</p>
+    </header>
+    <main>
+        <section>
+            <h2>Abstract</h2>
+            <p>
+                This project explores the generation of multiple viewing angles from a single image by leveraging advanced techniques in depth estimation, 3D reconstruction, and inpainting. Using RAFT-Stereo, accurate disparity maps were generated to create a 3D point cloud. Novel viewpoints were rendered through camera pose transformations, and LaMa inpainting addressed occlusions, ensuring realistic and visually consistent outputs. Applications include VR, AR, and immersive content creation.
+            </p>
+        </section>
 
-<header>
-  <h1>Project Title: Mecanum Wheel Robot</h1>
-</header>
+        <section>
+            <h2>Introduction</h2>
+            <p>
+                Traditional multi-view generation relies on costly datasets of multi-view images. This project synthesizes novel viewpoints from a single stereo image, using depth estimation, 3D reconstruction, and inpainting. Challenges such as occlusions were addressed with LaMa, highlighting the potential for revolutionizing content creation technologies.
+            </p>
+        </section>
 
-<main>
-  <section>
-    <h2>1. Overview</h2>
-    <p>
-      Built a robot using Mecanum wheels for precise and omnidirectional navigation. Integrated an optical flow sensor for localization, replacing traditional encoders, and employed EKF for real-time state estimation.
-    </p>
-  </section>
+        <section>
+            <h2>Methodology</h2>
+            <h3>1. Preparing the Environment and Data</h3>
+            <ul>
+                <li>Set up a Conda environment for dependency management.</li>
+                <li>Cloned RAFT-Stereo repository and downloaded pre-trained weights and datasets.</li>
+                <li>Ensured compatibility with Python and deep learning frameworks.</li>
 
-  <section>
-    <h2>2. Background and Motivation</h2>
-    <p>
-      The project aimed to explore alternative localization techniques for robots in environments where encoder-based odometry is unreliable.
-    </p>
-  </section>
+            </ul>
 
-  <section>
-    <h2>3. Implementation</h2>
-    <p>
-      <strong>Technical Approach:</strong>
-    </p>
-    <ul>
-      <li>Designed the chassis and integrated Mecanum wheels for multi-directional movement.</li>
-      <li>Used ZeroMQ to synchronize data from the optical flow sensor and IMU.</li>
-      <li>Developed Python programs (<code>opticalflow.py</code>, <code>icm20948.py</code>) for high-frequency data acquisition.</li>
-    </ul>
-    <p>
-      <strong>Challenges and Solutions:</strong> Overcame synchronization issues by carefully tuning the data pipeline for real-time updates.
-    </p>
-  </section>
+            <h3>2. Depth Estimation</h3>
+            <p>
+                Using RAFT-Stereo, stereo image pairs were processed to generate disparity maps, which were transformed into depth maps with the equation:
+            </p>
+            <img src="multiview_images/disparity map from running raft-stereo.png" />
+            <div class="code">Z = (f × B) / d</div>
+            <p>
+                Where <strong>Z</strong> is depth, <strong>f</strong> is focal length, <strong>B</strong> is baseline, and <strong>d</strong> is disparity.
+            </p>
 
-  <section>
-    <h2>4. Results and Outcomes</h2>
-    <ul>
-      <li>Achieved smooth and precise navigation in various directions.</li>
-      <li>Improved localization accuracy by avoiding encoder slip errors.</li>
-    </ul>
-  </section>
+            <h3>3. 3D Reconstruction</h3>
+            <p>
+                Depth maps were converted into 3D point clouds using:
+                <img src="multiview_images/cameraPoses and 3d points from changing camera positions for 3 degree incremental.png" />
+            </p>
+            <div class="code">[X, Y, Z] = Z × K⁻¹ × [u, v, 1]</div>
+            <p>
+                Where <strong>X, Y, Z</strong> are 3D coordinates, <strong>(u, v)</strong> are pixel coordinates, and <strong>K⁻¹</strong> is the inverse of the camera intrinsic matrix.
+            </p>
+           
 
-  <section class="media">
-    <h2>5. Visual Media</h2>
-    <p>Here’s a demonstration of the robot in action:</p>
-    <img src="robot_image.jpg" alt="Mecanum Wheel Robot">
-    <p>System architecture diagram:</p>
-    <img src="architecture_diagram.jpg" alt="System Architecture">
-  </section>
+            <h3>4. Camera Pose Transformation</h3>
+            <p>
+                New perspectives were generated by rotating the 3D point cloud with matrices like:
+            </p>
+            <div class="code">
+                Rz(θ) = | cos(θ) -sin(θ) 0 |<br>
+                        | sin(θ)  cos(θ) 0 |<br>
+                        | 0       0       1 |
+            </div>
+            <img src="multiview_images/reprojected 3d points.png" style="width: 500px; height: 200px;"/>
 
-  <section>
-    <h2>6. Reflection and Future Work</h2>
-    <p>
-      Learned about the complexities of sensor fusion and the importance of synchronization in real-time systems. Future work includes scaling the system for larger robots or drones.
-    </p>
-  </section>
+            <h3>5. Inpainting with LaMa</h3>
+            <p>
+                Occlusions in new views were addressed using LaMa inpainting, which maintained texture consistency and filled missing areas with realistic content.
+            </p>
+            <img src="multiview_images/masking before feeding into LAMA.png" style="width: 500px; height: 200px;" />
+            
+        </section>
 
-  <section>
-    <h2>7. Links and References</h2>
-    <ul>
-      <li><a href="https://github.com/your-repo" target="_blank">GitHub Repository</a></li>
-      <li><a href="documentation.pdf" target="_blank">Technical Documentation</a></li>
-    </ul>
-  </section>
-</main>
+        <section>
+            <h2>Results</h2>
+            <p>
+                The pipeline successfully generated disparity maps and dense 3D point clouds, enabling the synthesis of novel viewpoints. However, some challenges were observed, particularly in the accuracy of occlusion handling. While LaMa inpainting provided seamless results in many cases, its generalized approach led to inconsistencies in complex scenes. Tuning LaMa for depth-aware and context-specific inpainting could enhance the realism and reliability of multi-view perspectives, making the pipeline more suitable for applications in VR, AR, and immersive content creation.
+            </p>
+            <img src="multiview_images/depth_multiview.gif" style="width: 300px; height: 200px;" />
+        </section>
 
-<footer>
-  &copy; 2025 Srikanth Popuri. All rights reserved.
-</footer>
+        <section>
+            <h2>Challenges</h2>
+            <ul>
+                <li><strong>Occlusion Handling:</strong> Accurate mask generation was essential for effective inpainting.</li>
+                <li><strong>Depth Ordering:</strong> Foreground and background elements required proper separation to avoid visual artifacts.</li>
+                <li><strong>Point Cloud Alignment:</strong> Stitching across views needed robust alignment techniques like ICP.</li>
+            </ul>
+        </section>
 
+        <section>
+            <h2>Conclusion</h2>
+            <p>
+                This project demonstrates the effectiveness of combining RAFT-Stereo and LaMa for multi-view synthesis. Future work includes exploring depth-aware inpainting and refining depth maps for more complex scenes.
+            </p>
+        </section>
+        <section>
+            <h2>Links</h2>
+            <ul>
+                <li><a href="https://colab.research.google.com/drive/1NHcITB0KhKx2hZEtSGGaK5_D1Ur1FlaU#scrollTo=UP0yhwwZmE2X" >google colab</a></li>
+                <li><a href="multiview_images/MCEN_5228_ACV_Project_4 (1).pdf" download>Technical Document</a></li>
+            </ul>
+        </section>
+        
+        
+    </main>
+    <footer>
+        <p>&copy; 2025 Srikanth Popuri. All rights reserved.</p>
+    </footer>
 </body>
+
 </html>
