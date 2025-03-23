@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MCEN 5228: Project 3 - Blob The Builder</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f9;
+        }
+        header {
+            background-color: #333;
+            color: #fff;
+            padding: 1rem 0;
+            text-align: center;
+        }
+        main {
+            padding: 2rem;
+            max-width: 800px;
+            margin: auto;
+            background: #fff;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            border-radius: 8px;
+        }
+        h1{
+            color: #fff;
+        }
+        h2, h3 {
+            color: #333;
+        }
+        ul {
+            margin: 1rem 0;
+            padding-left: 20px;
+        }
+        .code-link {
+            margin-top: 1rem;
+            text-align: center;
+        }
+        .code-link a {
+            color: #007BFF;
+            text-decoration: none;
+        }
+        footer {
+            text-align: center;
+            margin-top: 2rem;
+            font-size: 0.9rem;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Structure from Motion (SfM) – 3D Scene Reconstruction</h1>
+      
+    </header>
+
+    <main>
+        <section>
+            <h2>Abstract</h2>
+            <p>This project focuses on reconstructing a 3D model of a scene using Structure from Motion (SfM) techniques applied to a set of 2D images captured from varying perspectives. The dataset includes six images of a street scene containing a building, a text file describing 2D image point correspondences across all image pairs, and the camera's calibration matrix. The methodology demonstrates the power of SfM in creating spatially accurate 3D reconstructions from photographic data.</p>
+        </section>
+
+        <section>
+            <h2>Introduction</h2>
+            <p>The objective was to reconstruct a 3D model using multiple 2D images captured from different perspectives. The provided dataset included images of a street scene, point correspondences, and a camera calibration matrix. This project showcases the application of computer vision techniques to achieve accurate 3D reconstructions.</p>
+        </section>
+
+        <section>
+            <h2>Methodology</h2>
+            <h3>1. Feature Matching and Outlier Rejection</h3>
+            <p>Feature correspondences were refined using RANSAC, which eliminated outliers and improved robustness.</p>
+
+            <h3>2. Estimation of Fundamental and Essential Matrices</h3>
+            <p>These matrices encapsulate geometric relationships between corresponding points in image pairs and were computed using the normalized 8-point algorithm and SVD.</p>
+
+            <h3>3. Camera Pose Estimation</h3>
+            <p>Using the essential matrix, the relative rotation and translation between two views were determined. The correct pose was selected based on the cheirality condition.</p>
+
+            <h3>4. Triangulation</h3>
+            <p>3D points were reconstructed using linear and non-linear triangulation, ensuring the points lay in front of both cameras.</p>
+
+            <h3>5. Bundle Adjustment</h3>
+            <p>An optimization technique was used to refine the 3D structure and camera poses by minimizing reprojection errors across all images and points.</p>
+           
+
+</style>
+        </section>
+
+        <section>
+            <h2>Challenges and Observations</h2>
+            <h3>Challenges</h3>
+            <ul>
+                <li>Dealing with noisy and sparse feature matches.</li>
+                <li>Triangulation instability due to incorrect poses.</li>
+                <li>Slow convergence during bundle adjustment.</li>
+            </ul>
+
+            <h3>Observations</h3>
+            <ul>
+                <li>RANSAC significantly improved feature matching quality.</li>
+                <li>Non-linear optimization reduced reprojection error effectively.</li>
+                <li>Visualization of results provided critical insights into performance.</li>
+            </ul>
+        </section>
+
+        <section>
+            <h2>Conclusion</h2>
+            <p>This project demonstrated successful 3D reconstruction using SfM techniques. Future work could explore advanced matching algorithms and real-time processing capabilities.</p>
+        </section>
+
+        <div class="code-link">
+            <p><a href="https://github.com/santoshchaganti/Blob_The_Builder-Gaussian_Splatting" target="_blank">View Code on GitHub</a></p>
+        </div>
+    </main>
+
+    <footer>
+        <p>&copy; 2025 Team Roronoa. All rights reserved.</p>
+    </footer>
+</body>
+</html>
