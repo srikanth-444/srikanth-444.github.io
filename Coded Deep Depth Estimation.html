@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MCEN 5228: Project 3 - Blob The Builder</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f9;
+        }
+        header {
+            background-color: #333;
+            color: #fff;
+            padding: 1rem 0;
+            text-align: center;
+        }
+        main {
+            padding: 2rem;
+            max-width: 800px;
+            margin: auto;
+            background: #fff;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            border-radius: 8px;
+        }
+        h1{
+            color: #fff;
+        }
+        h2, h3 {
+            color: #333;
+        }
+        ul {
+            margin: 1rem 0;
+            padding-left: 20px;
+        }
+        .code-link {
+            margin-top: 1rem;
+            text-align: center;
+        }
+        .code-link a {
+            color: #007BFF;
+            text-decoration: none;
+        }
+        footer {
+            text-align: center;
+            margin-top: 2rem;
+            font-size: 0.9rem;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Coded Image-Based Depth Estimation</h1>
+      
+    </header>
+
+    <main>
+        <section>
+            <h2>Overview</h2>
+            <p>Developed a depth estimation pipeline by simulating coded images using phase masks and training a U-Net-based neural network on monocular RGB images. The project explores the impact of coded imaging on depth estimation accuracy, evaluating models on NYUv2 and UMDCodedVO datasets.
+
+            </p>
+        </section>
+
+        <section>
+            <h2>Coded Image Generation</h2>
+            
+            <ul>
+            <li>Depth Layer Segmentation – Discretized continuous depth maps into predefined layers using torch.bucketize.</li>
+            <li>PSF-Based Convolution – Applied Point Spread Functions (PSF) to RGB images to simulate depth-dependent blurring.</li>
+            <li>Multi-Layer Convolution – Designed a linear convolution model to apply varying blur intensities across different depth layers.</li>
+              
+            <li>Dataset Processing – Generated coded images for UMDCodedVO-LivingRoom, DiningRoom, and NYUv2 datasets.</li>
+                
+            </ul>
+            <h2>Depth Estimation with Deep Learning</h2>
+            <ul>
+                <li>Neural Network Model – Implemented a U-Net-based depth estimation model for predicting depth from coded images.</li>
+                <li>Loss Functions – Compared absolute error loss (L1 Loss) and frequency-based loss for improved edge sharpness.</li>
+                <li>Training & Optimization – Trained the model on coded and pinhole camera images, optimizing for generalization.</li>
+                <li>Performance Metrics – Evaluated results using:</li>
+                <ul>
+                    Relative Absolute Error (Rel-Abs) → 0.0575
+                    Root Mean Square Error (RMSE) → 0.0405
+                    Inference Speed → 212.62 FPS
+                </ul>
+            </ul>
+            
+</style>
+        </section>
+
+        <section>
+            <h2>Challenges & solutions</h2>
+            
+            <ul>
+                <li>Loss of Depth Edges in Predictions → Introduced frequency-based loss for sharper depth boundaries.</li>
+                <li>Computational Complexity of Convolutions → Optimized PSF application with efficient tensor operations.</li>
+                
+
+        </section>
+
+        <section>
+            <h2>Results & Learnings</h2>
+            <ul>
+                <li>Successfully simulated coded images using PSF-based blurring techniques.</li>
+                <li>Developed a U-Net model capable of depth estimation from coded images with strong accuracy.</li>
+                </li>
+            </ul>
+            <img src="coded_images/rgb.gif" style="width:49%;" />
+            <img src="coded_images/depth.gif" style="width:49%" />
+        </section>
+
+        <div class="code-link">
+            <p><a href="https://colab.research.google.com/drive/101Y8Pj6IkLJaA4UcqfXHDfL4oJWiOi-_#scrollTo=E1geuNqp-I-K" target="_blank">View Code</a></p>
+            <p><a href="coded_images/report.pdf" download>Technical Document</a></p>
+        </div>
+    </main>
+
+    <footer>
+        <p>&copy; 2025 Team Roronoa. All rights reserved.</p>
+    </footer>
+</body>
+</html>

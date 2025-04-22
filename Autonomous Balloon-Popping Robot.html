@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MCEN 5228: Project 3 - Blob The Builder</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f9;
+        }
+        header {
+            background-color: #333;
+            color: #fff;
+            padding: 1rem 0;
+            text-align: center;
+        }
+        main {
+            padding: 2rem;
+            max-width: 800px;
+            margin: auto;
+            background: #fff;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            border-radius: 8px;
+        }
+        h1{
+            color: #fff;
+        }
+        h2, h3 {
+            color: #333;
+        }
+        ul {
+            margin: 1rem 0;
+            padding-left: 20px;
+        }
+        .code-link {
+            margin-top: 1rem;
+            text-align: center;
+        }
+        .code-link a {
+            color: #007BFF;
+            text-decoration: none;
+        }
+        footer {
+            text-align: center;
+            margin-top: 2rem;
+            font-size: 0.9rem;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Design and Implementation of an Autonomous Combat Robot</h1>
+      
+    </header>
+
+    <main>
+        <section>
+            <h2>Overview</h2>
+            <p>Developed an autonomous robot capable of real-time navigation and precise balloon-popping using advanced motion control, sensor fusion, and embedded systems. The robot seamlessly integrated mechanical, electronic, and software subsystems to achieve full autonomy.</p>
+        </section>
+        <img src="baloon_popping/robot front.jpg" style="width:100%" />
+
+        <section>
+            <h2>System Integration </h2>
+            <h3>Mechanical Integration</h3>
+            <ul>
+            <li>Designed a modular chassis to house all components while maintaining accessibility and balance.</li>
+            <li>Incorporated mecanum wheels for omnidirectional movement, enabling smooth navigation.</li>
+            <li>Developed two weapon systems</li>
+                <ul>
+                <li>Lance Mechanism (Close-Range): Servo-powered scissor system with an X-Acto blade.</li>
+                <li>Disk Shooter (Long-Range): 74,000 RPM flywheel launching limonene-coated disks.</li>
+                </ul>
+            </ul>
+            <h3>Electronics & Sensors</h3>
+            <ul>
+                <li>Integrated multiple microcontrollers (Raspberry Pi & Arduino Mega) to handle high-level logic and motor control.</li>
+                <li>Implemented sensor fusion with</li>
+                <ul>
+                    <li>IMU for orientation and acceleration data.</li>
+                    <li>Ultrasonic sensors for obstacle detection and avoidance.</li>
+                    <li>pixy Camera for  ballon detection and tracking.</li>
+                </ul>
+            </ul>
+            <h3>Software & Control</h3>
+            <ul>
+            <li>Developed Python-based control algorithms for real-time decision-making.</li>
+            <li>Implemented custom serial communication between Raspberry Pi and Arduino for efficient data transfer.</li>
+            <li>Designed an autonomous navigation system with</li>
+                <ul>
+                <li>Obstacle avoidance using IR and ultrasonic sensors.</li>
+                <li>Adaptive movement logic for tracking and engaging targets.</li>
+                </ul>
+            </ul>
+            <img src="baloon_popping/integration.jpg" style="width:100%" />
+            <img src="baloon_popping/robot top.jpg" style="width:100%" />
+</style>
+        </section>
+
+        <section>
+            <h2>Future Challenges & solutions</h2>
+            
+            <ul>
+                <li>Advanced Localization: Incorporate IMU + Optical Flow for precise motion tracking.</li>
+                <li>Power Optimization: Improve efficiency with better battery management.</li>
+                <li>Enhanced Path Planning: Implement Model Predictive Control (MPC) & RRT for smoother navigation.</li>
+            </ul>
+
+        </section>
+
+        <section>
+            <h2>Results & Learnings</h2>
+            <ul>
+                <li>Successfully developed a fully autonomous robot with integrated mechanical, electronic, and software systems.</li>
+                <li>Demonstrated effective real-time control, sensor fusion, and motion planning.</li>
+                <li>Gained hands-on experience in robotics, embedded systems, and system integration.
+                </li>
+            </ul>
+        </section>
+
+        <div class="code-link">
+            <p><a href="https://github.com/santoshchaganti/Blob_The_Builder-Gaussian_Splatting" target="_blank">View Code on GitHub</a></p>
+            <p><a href="3dreconstruction\MCEN_5228_ACV_Project_3 (1).pdf" download>Technical Document</a></p>
+        </div>
+    </main>
+
+    <footer>
+        <p>&copy; 2025 Team Roronoa. All rights reserved.</p>
+    </footer>
+</body>
+</html>
