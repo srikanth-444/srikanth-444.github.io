@@ -23,7 +23,7 @@
             max-width: 800px;
             margin: auto;
             background: #fff;
-            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            /* box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1); */
             border-radius: 8px;
         }
         h1{
@@ -49,76 +49,137 @@
             margin-top: 2rem;
             font-size: 0.9rem;
         }
+        @media print {
+            @page {
+                margin: 0;
+                padding: 0;
+                size: A4;
+            }
+            
+          .page-break {
+            margin-top: 20px !important;
+            page-break-before: always;
+            break-before: page;
+          }
+          body {
+                font-family: "Georgia", serif;
+                font-size: 14pt;
+                color: #000;
+                background: #fff;
+                margin: 0;
+                padding: 0;
+                line-height: 1;
+            }
+        h1{
+                font-size: 24pt;
+                margin: 0;
+                padding: 0;
+                text-align: center;
+                line-height: 1;
+            
+        }
+        h2,h3 {
+                font-size: 18pt;
+                margin: 0;
+                padding: 0;
+                text-align: left;
+                line-height: 1;
+            }
+            .print-image {
+                float: right;
+                width: 40% !important;
+                margin: 10px;
+            }
+            .print-image-small {
+                
+                width: 28% !important;
+                margin: 10px;
+            }
+
+            .clear-print {
+                clear: both;
+            }
+            
+        }
     </style>
 </head>
 <body>
     <header>
-        <h1>Design and Implementation of an Autonomous Combat Robot</h1>
+        <h1>Autonomous Racing with AWS DeepRacer </h1>
+        <p>Graduate Advance Robotics Course, Spring 2024</p>
       
     </header>
 
     <main>
         <section>
             <h2>Overview</h2>
-            <p>Developed a software stack for an autonomous racing vehicle, implementing LIDAR-based localization, proportional control, and computer vision. The system successfully navigated a track, performed reverse driving, and recognized stop signs autonomously.</p>
-        </section>
-
-        <section>
-            <h2>Software Architecture & System Integration</h2>
-            <h3>Localization & State Estimation</h3>
-            <p> Implemented an Extended Kalman Filter (EKF) for localization, fusing:</p>
-            <ul>
-            <li>Designed a modular chassis to house all components while maintaining accessibility and balance.</li>
-            <li>Incorporated mecanum wheels for omnidirectional movement, enabling smooth navigation.</li>
-            <li>Developed two weapon systems</li>
-                <ul>
-                <li>Bicycle motion model for vehicle kinematics.</li>
-                <li>LIDAR-based Iterative Closest Point (ICP) for pose correction.
-                    Addressed uncertainty growth by tuning process and sensor noise covariances.</li>
+            <p>This project demonstrates my skills in autonomous robotics and vehicle control. I designed and implemented a system for the AWS DeepRacer to autonomously navigate a race track. My contributions included:
+                <img loading="lazy" class="print-image aligncenter size-medium" src="https://d2908q01vomqb2.cloudfront.net/ca3512f4dfa95a03169c5a670a4c91a19b3077b4/2021/04/26/Buscaron-deepracer_main.gif" width="40%"  >
+                <ul>    
+                <li>Developing control algorithms for forward and reverse driving.</li>
+                <li>Implementing LiDAR-based localization using an Extended Kalman Filter (EKF).</li>               
                 </ul>
-            </ul>
-            <img src="Autonomus Racing/lidar sensing.png" style="width:49%" />
-            <img src="Autonomus Racing/orientation.png" style="width:49%" />
-            <h3>Navigation & Control</h3>
-            <ul>
-                <li>Developed a Proportional Controller (P-Controller) for lane centering and orientation correction.</li>
-                <li> Implemented forward and reverse driving modes, modifying control gains for stability.</li>
-                <li>Designed a decision-making flow based on LIDAR perception to handle turns and track boundaries.</li>
-            </ul>
-            <h3>Computer Vision for Stop Sign Detection</h3>
-            <ul>
-            <li>Used OpenCV-based blob detection to identify stop signs in real-time</li>
-            <li>Applied Gaussian blurring, color filtering, and contour detection for robustness.</li>
-            <li>Optimized stopping logic to reduce false positives and prevent redundant stops.</li>
-            </ul>
-            <img src="Autonomus Racing/EKF DATA.png" style="width:49%" />
-            <h3>inter-process Communication & Data Flow</h3>    
-            <ul>
-                <li>Integrated ROS-based messaging for real-time sensor data processing.</li>
-                <li>Optimized data flow between perception, planning, and control nodes for smooth operation.</li>
-            </ul>
-            
-</style>
+                The project involved overcoming challenges in sensor data processing, state estimation, and real-time control. It showcases my ability to apply techniques in robotics, including proportional control, Kalman filtering, and computer vision, to a complex autonomous navigation task.</p>
         </section>
 
         <section>
-            <h2> Future Challenges & solutions</h2>
+            <h3>Autonomous Track Navigation</h2>
+            <p> The primary challenge was to develop a control system enabling the AWS DeepRacer to autonomously navigate the race track without collisions.</p>
+            <img src="Autonomus Racing/Driver Node.png" class="print-image" style="width:100%" />
+            <ul>
+            <li>The solution involved creating a driver node with two operational modes</li>
+            <li>Developed Algorthim to find the points that are being intercepted by walls, and predict the robot relative postion from wall using Linear Regression </li>
+            <li>Implemented a proportional controller to adjust the car's position and orientation From the sensed relative position </li>
+            </ul>
+            
+            
+            
+            
+            <p>The system allowed for autonomous navigation, but the car experienced some instability and collisions, particularly during turns.</p>
+            
+            <img src="Autonomus Racing/lidar sensing.png" class="print-image-small"  style="width:49%" />
+            <img src="Autonomus Racing/orientation.png" class="print-image-small"  style="width:49%" />
+            <div class="clear-print"></div>
+            <h3 class="page-break">LiDAR-based EKF for Localization</h3>
+            <img src="Autonomus Racing/EKF NODE.png" class="print-image"  style="width:49%" />
+            <ul>
+            <li>Developed EKF that could combine the car's dynamic model with LiDAR measurements to provide the best possible estimate of the car's location and orientation relative to its starting point</li>
+            <li>Bycycle Model was used for system approximation</li>
+            <li>ICP was used over point cloud generated by lidar giving the transformation of the robot with relative to previous position  </li>
+            </ul>
+            
+            <img src="Autonomus Racing/EKF DATA.png" class="print-image-small"  style="width:49%" />
+            <p>The EKF implementation had limited accuracy, with the estimated trajectory deviating from the actual path and increasing uncertainty over time.</p>
+            <div class="clear-print"></div>
+            <h3>Reverse Driving</h3>
+            <ul>
+                <li>The PID Controller designed for forward driving was not suitable for reverse driving due to the car's different dynamics in reverse. </li>
+                <li>Implemented a separate PID controller for reverse driving, which was tuned to ensure smooth and stable operation.</li>
+            </ul>
+            <!-- <h3> Stop Sign Detection</h3>    
+            <p>The task was to program the vehicle to detect stop signs using its camera, stop briefly, and then continue driving.<br>
+            The solution used OpenCV to perform blob detection. The image was filtered for red pixels, blurred, and processed to highlight potential stop signs. If a blob of a certain size was detected, the car would stop.<br>
+            The system successfully detected stop signs and initiated stops, but it also exhibited errors such as stopping when no stop sign was present and stopping repeatedly at the same sign.</p> -->
+            <!-- <div class="clear-print"></div> -->
+            
+        </section>
+
+        <section>
+            <h2> Key takeaways</h2>
             
             <ul>
-                <li>Advanced Localization: Incorporate IMU + Optical Flow for precise motion tracking.</li>
-                <li>Power Optimization: Improve efficiency with better battery management.</li>
-                
+                <li>The project demonstrated the complexities of autonomous vehicle control, highlighting the importance of accurate sensor data and robust control algorithms.</li>
+                <li>LiDAR-based localization using EKF is challenging and sensitive to sensor noise and model inaccuracies.</li>
+                <li>Reverse driving requires careful tuning of control parameters to maintain stability.</li>               
+            </ul>   
 
         </section>
 
         <section>
-            <h2>Results & Learnings</h2>
-            <ul>
-                <li>LIDAR Noise & Missing Data → Implemented filtering & adjusted scan parameters</li>
-                <li>EKF Localization Drift → Improved ICP-based corrections & tuned noise models.</li>
-                </li>
-            </ul>
+            <h2>Technologies Used</h2>
+            AWS DeepRacer, LiDAR, ROS, Python, OpenCV, SimpleICP.
         </section>
+        Team members: Srikanth Popuri, Aidan Luczkow, Rashikha Jagula"
 
         <div class="code-link">
             <p><a href="https://github.com/srikanth-444/adr-class" target="_blank">View Code on GitHub</a></p>
@@ -126,8 +187,8 @@
         </div>
     </main>
 
-    <footer>
+    <!-- <footer>
         <p>&copy; 2025 Team Roronoa. All rights reserved.</p>
-    </footer>
+    </footer> -->
 </body>
 </html>

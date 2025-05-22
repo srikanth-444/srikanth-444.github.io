@@ -34,7 +34,7 @@
 */
 
 // Define base and accent colors
-$base-color: #3498db;
+$base-color: #000000;
 $base-color-hover: darken($base-color, 10%);
 
 // Define background colors
@@ -42,11 +42,11 @@ $background: #fff;
 $background-alt: #f2f2f5;
 
 // Define border colors
-$border: #dcd9d9;
+$border: #c4c2c2;
 
 // Define text colors
-$heading: #374054;
-text$: #74808a;
+$heading: #ffffff;
+$text: #ffffff;
 
 /*
     ---------------------
@@ -87,12 +87,29 @@ text$: #74808a;
 body {
     font-family: 'Lato', sans-serif;
     font-size: 16px;
+    
 
+    background-image:  url(../images/lead-bg.jpg);
+    background-size: cover;
+    background-attachment: fixed; /* Key: keeps the image fixed while content scrolls */
+    background-repeat: no-repeat;
+    background-position: center;
+    // background: rgba($base-color-hover, 0.8);
     &.active {
         overflow: hidden;
         z-index: -1;
     }
 }
+body::before {
+    content: '';
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba($base-color-hover, 0.8); /* Gray with 50% opacity */
+    z-index: -1;
+  }
 
 // No JS styles
 .no-js {
@@ -154,7 +171,7 @@ header {
 
     ul {
         display: inline-block;
-        background: $background;
+        // background: $background;
         text-align: center;
         padding: 10px;
         margin: 0;
@@ -174,7 +191,7 @@ header {
         &:hover {
             color: $base-color-hover;
             text-decoration: none;
-            background: #eee;
+            background: #eeeeee3d;
             border-radius: 4px;
         }
 
@@ -192,7 +209,28 @@ header {
         position: fixed;
         z-index: 999;
     }
+
+    .glass-navbar  {
+        // position: fixed;
+        background: rgba(100, 100, 100, 0.2); /* translucent gray */
+        backdrop-filter: blur(10px);         /* blur background */
+        -webkit-backdrop-filter: blur(10px); /* for Safari */
+        box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1); /* soft shadow */
+        border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+      }
+      .navbar {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+
+        z-index: 999;
+      }
+    
+    
+    
 }
+
 
 #menu {
     &.active {
@@ -331,7 +369,7 @@ footer {
         left: 0;
         right: 0;
         margin: 0 auto;
-        background: $base-color;
+        background: #19a5cf;
     }
 }
 
@@ -350,7 +388,7 @@ footer {
     height: 100vh;
     min-height: 500px;
     max-height: 1080px;
-    background: url(../images/lead-bg.jpg);
+    // border-bottom: 1px solid $border;
     background-size: cover;
     padding: 15px;
     overflow: hidden;
@@ -378,7 +416,7 @@ footer {
     }
 
     h2,p {
-        color: lighten($base-color, 25%);
+        color: lighten(#19a5cf, 25%);
         font-weight: 500;
         font-size: 2.25em;
         margin-bottom: 15px;
@@ -393,8 +431,22 @@ footer {
     right: 0;
     bottom: 0;
     left: 0;
-    background: rgba($base-color-hover, 0.8);
+    // background: rgba($base-color-hover, 0.8);
     z-index: 1;
+}
+.down_button{
+    display: inline-block;
+    color: #19a5cf;
+    padding: 15px 25px;
+    border: 3px solid #19a5cf;
+    border-radius: 30px;
+    @include transition();
+
+    &:hover {
+        color: $base-color;
+        background: #fff;
+        text-decoration: none;
+    }
 }
 
 #lead-down {
@@ -447,28 +499,51 @@ footer {
 
 #about {
     padding: 75px 15px;
-    border-bottom: 1px solid $border;
-
+    border: 1px solid rgba(255, 255, 255, 0.2); // subtle glassy border
+    border-radius: 20px;
+    background: rgba(255, 255, 255, 0.1); // transparent white background
+    backdrop-filter: blur(10px); // glass effect
+    -webkit-backdrop-filter: blur(10px); // Safari support
+    box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.2); // subtle glow
+    text-align: center;
+    
+  
     h2 {
-        color: $heading;
+      color: $heading;
     }
-
+  
     p {
-        color: $text;
-        margin: 0;
+      color: $text;
+      margin: 0;
     }
-}
+  }
 
 /*
     --------------------------------
     ----- 6. Experience Styles -----
     --------------------------------
 */
+.section-box {
+    margin: 40px auto; // Adds vertical spacing between boxes
+    padding: 75px 15px;
+    border-radius: 20px;
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
+    width: 80%; // Optional: control box width
+  }
 
 #experience {
-    padding: 50px 15px;
+    padding: 75px 15px;
+    border: 1px solid rgba(255, 255, 255, 0.2); // subtle glassy border
+    border-radius: 20px;
+    background: rgba(255, 255, 255, 0.1); // transparent white background
+    backdrop-filter: blur(10px); // glass effect
+    -webkit-backdrop-filter: blur(10px); // Safari support
+    box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.2); // subtle glow
     text-align: center;
-    border-bottom: 1px solid $border;
 
     h2 {
         color: $heading;
@@ -507,7 +582,7 @@ footer {
 
 .vtimeline-content {
     margin-left: 350px;
-    background: #fff;
+    background: rgba(100, 100, 100, 0.2);;
     border: 1px solid #e6e6e6;
     padding: 15px;
     border-radius: 3px;
@@ -524,7 +599,7 @@ footer {
     h4 {
         font-size: 1.2em;
         font-weight: 300;
-        color: #7e8890;
+        color: #19a5cf;
         margin: 0 0 15px 0;
     }
 
@@ -567,7 +642,7 @@ footer {
     left: 0;
     top: 10px;
     font-weight: 300;
-    color: #374054;
+    color: #19a5cf;
 }
 
 /*
@@ -577,8 +652,13 @@ footer {
 */
 
 #education {
-    padding: 50px 15px 20px 15px;
-    border-bottom: 1px solid $border;
+    padding: 75px 15px;
+    border: 1px solid rgba(255, 255, 255, 0.2); // subtle glassy border
+    border-radius: 20px;
+    background: rgba(255, 255, 255, 0.1); // transparent white background
+    backdrop-filter: blur(10px); // glass effect
+    -webkit-backdrop-filter: blur(10px); // Safari support
+    box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.2); // subtle glow
     text-align: center;
 
     h2 {
@@ -607,7 +687,7 @@ footer {
     }
 
     h4 {
-        color: $text;
+        color: #19a5cf;
         clear: both;
         font-weight: 500;
         margin: 0 0 15px 0;
@@ -631,8 +711,13 @@ footer {
 */
 
 #projects {
-    padding: 50px 15px;
-    border-bottom: 1px solid $border;
+    padding: 75px 15px;
+    border: 1px solid rgba(255, 255, 255, 0.2); // subtle glassy border
+    border-radius: 20px;
+    background: rgba(255, 255, 255, 0.1); // transparent white background
+    backdrop-filter: blur(10px); // glass effect
+    -webkit-backdrop-filter: blur(10px); // Safari support
+    box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.2); // subtle glow
     text-align: center;
 
     h2 {
@@ -641,24 +726,26 @@ footer {
     }
 }
 
+
 .project {
     position: relative;
     max-width: 900px;
     margin: 0 auto 30px auto;
     overflow: hidden;
-    background: #fff;
+    background: rgba(100, 100, 100, 0.2);
     border-radius: 4px;
 }
 
 .project-image {
-    float: left;
+    float: center;
 }
 
+
 .project-info {
-    position: absolute;
-    top: 50%;
-    transform: translateY(-50%);
-    margin-left: 300px;
+    // position: absolute;
+    // top: 50%;
+    // transform: translateY(-50%);
+    // margin-left: 300px;
     padding: 15px;
     text-align: left;
 
@@ -673,6 +760,14 @@ footer {
         color: $text;
         margin: 0 0 15px 0;
         font-size: 0.9em;
+    }
+    a:link{
+        color:#19a5cf
+    }
+    li{
+        color: $text;
+        font-size: 0.9em;
+        margin: 0 0 15px 0;
     }
 }
 
@@ -696,12 +791,20 @@ footer {
 */
 
 #skills {
-    padding: 50px 15px;
+    
+    padding: 75px 15px;
+    border: 1px solid rgba(255, 255, 255, 0.2); // subtle glassy border
+    border-radius: 20px;
+    background: rgba(255, 255, 255, 0.1); // transparent white background
+    backdrop-filter: blur(10px); // glass effect
+    -webkit-backdrop-filter: blur(10px); // Safari support
+    box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.2); // subtle glow
     text-align: center;
-
     h2 {
         color: $heading;
         margin-bottom: 50px;
+        
+        
     }
 
     ul {
@@ -709,6 +812,7 @@ footer {
         margin: 0 auto;
         padding: 0;
         max-width: 800px;
+        
     }
 
     li {
@@ -716,7 +820,7 @@ footer {
         margin: 7px;
         padding: 5px 10px;
         color: $heading;
-        background: darken($background-alt, 5%);
+        background: rgba(100, 100, 100, 0.2);
         list-style: none;
         cursor: default;
         font-size: 1.2em;
@@ -898,6 +1002,7 @@ footer {
 
     #about {
         text-align: center;
+        background:rgba(100, 100, 100, 0.2);
 
         p {
             text-align: left;
@@ -951,6 +1056,7 @@ footer {
 
     #lead-down {
         display: none;
+        
     }
 
     .education-block {

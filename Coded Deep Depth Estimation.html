@@ -23,7 +23,7 @@
             max-width: 800px;
             margin: auto;
             background: #fff;
-            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            /* box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1); */
             border-radius: 8px;
         }
         h1{
@@ -38,7 +38,7 @@
         }
         .code-link {
             margin-top: 1rem;
-            text-align: center;
+            text-align: left;
         }
         .code-link a {
             color: #007BFF;
@@ -49,11 +49,64 @@
             margin-top: 2rem;
             font-size: 0.9rem;
         }
+        @media print {
+            @page {
+                margin: 0;
+                padding: 0;
+                size: A4;
+            }
+            
+          .page-break {
+            margin-top: 20px !important;
+            page-break-before: always;
+            break-before: page;
+          }
+          body {
+                font-family: "Georgia", serif;
+                font-size: 14pt;
+                color: #000;
+                background: #fff;
+                margin: 0;
+                padding: 0;
+                line-height: 1;
+            }
+        h1{
+                font-size: 24pt;
+                margin: 0;
+                padding: 0;
+                text-align: center;
+                line-height: 1;
+            
+        }
+        h2,h3 {
+                font-size: 18pt;
+                margin: 0;
+                padding: 0;
+                text-align: left;
+                line-height: 1;
+            }
+            .print-image {
+                float: right;
+                width: 50% !important;
+                margin: 10px;
+            }
+            .print-image-small {
+                
+                width: 30% !important;
+                margin: 10px;
+            }
+
+            .clear-print {
+                clear: both;
+            }
+            
+        }
     </style>
 </head>
 <body>
     <header>
-        <h1>Coded Image-Based Depth Estimation</h1>
+        <h1>Coded Image-Based Depth Estimation Fall 2024</h1>
+        <p>Graduate Advanced Computer Vision Course, Fall 2024</p>
       
     </header>
 
@@ -67,7 +120,7 @@
 
         <section>
             <h2>Coded Image Generation</h2>
-            
+            <img src="coded_images/0.png" class= "print-image" style="width:49%;" />
             <ul>
             <li>Depth Layer Segmentation – Discretized continuous depth maps into predefined layers using torch.bucketize.</li>
             <li>PSF-Based Convolution – Applied Point Spread Functions (PSF) to RGB images to simulate depth-dependent blurring.</li>
@@ -76,6 +129,7 @@
             <li>Dataset Processing – Generated coded images for UMDCodedVO-LivingRoom, DiningRoom, and NYUv2 datasets.</li>
                 
             </ul>
+            
             <h2>Depth Estimation with Deep Learning</h2>
             <ul>
                 <li>Neural Network Model – Implemented a U-Net-based depth estimation model for predicting depth from coded images.</li>
@@ -88,20 +142,22 @@
                     Inference Speed → 212.62 FPS
                 </ul>
             </ul>
+            <img src="coded_images/comparison_output.png"  style="width:100%;" />
             
-</style>
+            
         </section>
 
         <section>
-            <h2>Challenges & solutions</h2>
+            <h2 class="page-break">Challenges & solutions</h2>
             
             <ul>
                 <li>Loss of Depth Edges in Predictions → Introduced frequency-based loss for sharper depth boundaries.</li>
                 <li>Computational Complexity of Convolutions → Optimized PSF application with efficient tensor operations.</li>
-                
-
+            </ul>
         </section>
-
+        <img src="coded_images/rgb.gif"  style="width:49%;" />
+            <img src="coded_images/depth.gif"  style="width:49%" />
+        
         <section>
             <h2>Results & Learnings</h2>
             <ul>
@@ -109,8 +165,7 @@
                 <li>Developed a U-Net model capable of depth estimation from coded images with strong accuracy.</li>
                 </li>
             </ul>
-            <img src="coded_images/rgb.gif" style="width:49%;" />
-            <img src="coded_images/depth.gif" style="width:49%" />
+            
         </section>
 
         <div class="code-link">
@@ -119,8 +174,8 @@
         </div>
     </main>
 
-    <footer>
+    <!-- <footer>
         <p>&copy; 2025 Team Roronoa. All rights reserved.</p>
-    </footer>
+    </footer> -->
 </body>
 </html>

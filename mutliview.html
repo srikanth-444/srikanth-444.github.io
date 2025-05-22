@@ -6,46 +6,42 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Multi-View Generation Project</title>
     <style>
-        body {
+         body {
             font-family: Arial, sans-serif;
             line-height: 1.6;
             margin: 0;
             padding: 0;
-            background-color: #f9f9f9;
-            color: #333;
+            background-color: #f4f4f9;
         }
-
         header {
-            background-color: #4d4d4d;
-            color: white;
-            padding: 20px;
+            background-color: #333;
+            color: #fff;
+            padding: 1rem 0;
             text-align: center;
         }
-
         main {
-            max-width: 900px;
-            margin: 20px auto;
-            background: white;
-            padding: 20px;
+            padding: 2rem;
+            max-width: 800px;
+            margin: auto;
+            background: #fff;
+            /* box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1); */
             border-radius: 8px;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
         }
 
         section {
             margin-bottom: 20px;
         }
         h1{
-            color: #ffffff;
+            color: #fff;
         }
-
-        h2 {
-            color: #000000;
+        h2, h3 {
+            color: #333;
         }
-
         ul {
-            list-style-type: disc;
+            margin: 1rem 0;
             padding-left: 20px;
         }
+        
 
         .code {
             background-color: #f4f4f4;
@@ -69,31 +65,83 @@
             margin-top: 2rem;
             font-size: 0.9rem;
         }
+        @media print {
+            @page {
+                margin: 0;
+                padding: 0;
+                size: A4;
+            }
+            
+          .page-break {
+            margin-top: 20px !important;
+            page-break-before: always;
+            break-before: page;
+          }
+          body {
+                font-family: "Georgia", serif;
+                font-size: 14pt;
+                color: #000;
+                background: #fff;
+                margin: 0;
+                padding: 0;
+                line-height: 1;
+            }
+        h1{
+                font-size: 24pt;
+                margin: 0;
+                padding: 0;
+                text-align: center;
+                line-height: 1;
+            
+        }
+        h2,h3 {
+                font-size: 18pt;
+                margin: 0;
+                padding: 0;
+                text-align: left;
+                line-height: 1;
+            }
+            .print-image {
+                float: right;
+                width: 50% !important;
+                margin: 10px;
+            }
+            .print-image-small {
+                /* float: right; */
+                width: 45% !important;
+                margin: 10px;
+            }
+
+            .clear-print {
+                clear: both;
+            }
+            
+        }
     </style>
 </head>
 
 <body>
     <header>
         <h1>Multi-View Generation from a Single Image</h1>
-        <p>Leveraging 3D Reconstruction and Inpainting</p>
+        <p>Graduate Advance Computer Vision Course, Fall 2024</p>
     </header>
     <main>
         <section>
-            <h2>Abstract</h2>
+            <h2>Overview</h2>
             <p>
-                This project explores the generation of multiple viewing angles from a single image by leveraging advanced techniques in depth estimation, 3D reconstruction, and inpainting. Using RAFT-Stereo, accurate disparity maps were generated to create a 3D point cloud. Novel viewpoints were rendered through camera pose transformations, and LaMa inpainting addressed occlusions, ensuring realistic and visually consistent outputs. Applications include VR, AR, and immersive content creation.
+                This project explores the generation of multiple viewing angles from a single image by leveraging advanced techniques in depth estimation, 3D reconstruction, and inpainting. Using RAFT-Stereo, accurate disparity maps were generated to create a 3D point cloud. Novel viewpoints were rendered through camera pose transformations, and LaMa inpainting. Applications include VR, AR, and immersive content creation.
             </p>
         </section>
 
-        <section>
+        <!-- <section>
             <h2>Introduction</h2>
             <p>
                 Traditional multi-view generation relies on costly datasets of multi-view images. This project synthesizes novel viewpoints from a single stereo image, using depth estimation, 3D reconstruction, and inpainting. Challenges such as occlusions were addressed with LaMa, highlighting the potential for revolutionizing content creation technologies.
             </p>
-        </section>
+        </section> -->
 
         <section>
-            <h2>Methodology</h2>
+            <h2>My Work</h2>
             <h3>1. Preparing the Environment and Data</h3>
             <ul>
                 <li>Set up a Conda environment for dependency management.</li>
@@ -103,19 +151,20 @@
             </ul>
 
             <h3>2. Depth Estimation</h3>
+            <img src="multiview_images/disparity map from running raft-stereo.png" class="print-image" />
             <p>
                 Using RAFT-Stereo, stereo image pairs were processed to generate disparity maps, which were transformed into depth maps with the equation:
             </p>
-            <img src="multiview_images/disparity map from running raft-stereo.png" />
+           
             <div class="code">Z = (f × B) / d</div>
             <p>
                 Where <strong>Z</strong> is depth, <strong>f</strong> is focal length, <strong>B</strong> is baseline, and <strong>d</strong> is disparity.
             </p>
-
+            <div class="clear-print"></div>
             <h3>3. 3D Reconstruction</h3>
             <p>
                 Depth maps were converted into 3D point clouds using:
-                <img src="multiview_images/cameraPoses and 3d points from changing camera positions for 3 degree incremental.png" />
+                <img src="multiview_images/cameraPoses and 3d points from changing camera positions for 3 degree incremental.png" class="print-image" />
             </p>
             <div class="code">[X, Y, Z] = Z × K⁻¹ × [u, v, 1]</div>
             <p>
@@ -123,7 +172,7 @@
             </p>
            
 
-            <h3>4. Camera Pose Transformation</h3>
+            <h3 class="page-break">4. Camera Pose Transformation</h3>
             <p>
                 New perspectives were generated by rotating the 3D point cloud with matrices like:
             </p>
@@ -132,26 +181,27 @@
                         | sin(θ)  cos(θ) 0 |<br>
                         | 0       0       1 |
             </div>
-            <img src="multiview_images/reprojected 3d points.png" style="width: 500px; height: 200px;"/>
-
-            <h3>5. Inpainting with LaMa</h3>
+            
+            <div class="clear-print"></div>
+            <h3 >5. Inpainting with LaMa</h3>
             <p>
                 Occlusions in new views were addressed using LaMa inpainting, which maintained texture consistency and filled missing areas with realistic content.
             </p>
-            <img src="multiview_images/masking before feeding into LAMA.png" style="width: 500px; height: 200px;" />
+            <img src="multiview_images/reprojected 3d points.png" style="width: 500px; height: 200px;" class="print-image-small"/>
+            <img src="multiview_images/masking before feeding into LAMA.png" style="width: 500px; height: 200px;" class="print-image-small"/>
             
         </section>
-
+        <div class="clear-print"></div>
         <section>
             <h2>Results</h2>
             <p>
                 The pipeline successfully generated disparity maps and dense 3D point clouds, enabling the synthesis of novel viewpoints. However, some challenges were observed, particularly in the accuracy of occlusion handling. While LaMa inpainting provided seamless results in many cases, its generalized approach led to inconsistencies in complex scenes. Tuning LaMa for depth-aware and context-specific inpainting could enhance the realism and reliability of multi-view perspectives, making the pipeline more suitable for applications in VR, AR, and immersive content creation.
-            </p><img src="multiview_images/depth_multiview.gif" style="width: 300px; height: 200px;" />
+            </p><img src="multiview_images/depth_multiview.gif" style="width: 300px; height: 200px;" class="print-image" />
             
         </section>
 
         <section>
-            <h2>Challenges</h2>
+            <h2>Challenges and Improvments need to be increased</h2>
             <ul>
                 <li><strong>Occlusion Handling:</strong> Accurate mask generation was essential for effective inpainting.</li>
                 <li><strong>Depth Ordering:</strong> Foreground and background elements required proper separation to avoid visual artifacts.</li>
@@ -159,23 +209,23 @@
             </ul>
         </section>
 
-        <section>
+        <!-- <section>
             <h2>Conclusion</h2>
             <p>
                 This project demonstrates the effectiveness of combining RAFT-Stereo and LaMa for multi-view synthesis. Future work includes exploring depth-aware inpainting and refining depth maps for more complex scenes.
             </p>
-        </section>
+        </section> -->
         
         <div class="code-link">  
-            <p><a href="https://colab.research.google.com/drive/1NHcITB0KhKx2hZEtSGGaK5_D1Ur1FlaU#scrollTo=UP0yhwwZmE2X" target="blank" >google colab</a></p>
-            <p><a href="multiview_images/MCEN_5228_ACV_Project_4 (1).pdf" download>Technical Document</a></p>
+            <p><a href="https://colab.research.google.com/drive/1NHcITB0KhKx2hZEtSGGaK5_D1Ur1FlaU#scrollTo=UP0yhwwZmE2X" target="blank" >Google colab</a><br>
+            <a href="multiview_images/MCEN_5228_ACV_Project_4 (1).pdf" download>Technical Document</a></p>
         </div>    
         
         
     </main>
-    <footer>
+    <!-- <footer>
         <p>&copy; 2025 Srikanth Popuri. All rights reserved.</p>
-    </footer>
+    </footer> -->
 </body>
 
 </html>

@@ -10,8 +10,35 @@
 	<link rel="icon" href="favicon.ico" type="image/x-icon">
     <link href="https://fonts.googleapis.com/css?family=Lato:300,400,700,900" rel="stylesheet">
     <link rel="stylesheet" href="libs/font-awesome/css/font-awesome.min.css">
-    <link href="css/bootstrap.min.css" rel="stylesheet">
-    <link href="css/styles.css" rel="stylesheet">
+    <link href="scss/styles.css" rel="stylesheet">
+        <!-- Bootstrap 5 CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Bootstrap 5 JS (for navbar toggling) -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    
+    <style>
+        @media print {
+            @page {
+                margin: 0;
+                padding: 0;
+                size: A4;
+            }
+            
+          .page-break {
+            page-break-before: always;
+            break-before: page;
+          }
+          body {
+                font-family: "Georgia", serif;
+                font-size: 11pt;
+                color: #000;
+                background: #fff;
+                margin: 0;
+                padding: 0;
+                line-height: 1;
+            }
+        }
+      </style>
 </head>
 
 <body>
@@ -20,48 +47,70 @@
     </div>
     <!-- End #mobile-menu-toggle -->
     <header>
-        <div class="row">
-        <div class="col-md-3">
-        <div  style="text-align:left; height: 100%;overflow-y: auto;box-shadow: none;border-radius: 0;width: 100%;">
-            
-        <a href="#lead"><h1 style="margin :0px;padding:0px">Srikanth Popuri</h1><p style="margin :0px;padding:0px">Mechanical Engineer</p></a>  
-        <a href="https://github.com/srikanth-444" target="_blank"><i class="fa fa-github" aria-hidden="true"></i></a>
-        <a href="https://www.linkedin.com/in/srikanth-popuri-3649a01a2/" target="_blank"><i class="fa fa-linkedin" aria-hidden="true"></i></a>         
-        </div>
-        </div>
-        
-        <div class="col-md-9">
-        <div id="mobile-menu-close">
-            <span>Close</span> <i class="fa fa-times" aria-hidden="true"></i>
-        </div>
-        <ul id="menu" class="shadow">
-            <li>
-                <a href="#skills">Skills</a>
-            </li>
-            <li>
-                <a href="#experience">Experience</a>
-            </li>
-            
-            <li>
-                <a href="#projects">Projects</a>
-            </li>
-            
-            <li>
-                <a href="#education">Education</a>
-            </li>
-        </ul>
-    </div>
-    </div>
-    </header>
+        <nav class="navbar navbar-expand-md navbar-light glass-navbar">
+          <div class="container-fluid">
+            <!-- Left Side: Name and Title -->
+            <a class="navbar-brand" href="#lead">
+              <h1 class="h5 mb-0 text-white">Srikanth Popuri</h1>
+              <p class="mb-0 small text-white">Mechanical Engineer</p>
+            </a>
+      
+            <!-- GitHub & LinkedIn icons -->
+            <div class="d-md-none d-flex">
+              <a href="https://github.com/srikanth-444" class="nav-link" target="_blank">
+                <i class="fa fa-github"></i>
+              </a>
+              <a href="https://www.linkedin.com/in/srikanth-popuri-3649a01a2/" class="nav-link" target="_blank">
+                <i class="fa fa-linkedin"></i>
+              </a>
+            </div>
+      
+            <!-- Navbar Toggler (Mobile) -->
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mainNavbar">
+              <span class="navbar-toggler-icon"></span>
+            </button>
+      
+            <!-- Right Side: Nav Links -->
+            <div class="collapse navbar-collapse justify-content-end" id="mainNavbar">
+              <ul class="navbar-nav">
+                <li class="nav-item">
+                    <a class="nav-link text-white" href="#about">About</a>
+                  </li>
+                <li class="nav-item">
+                  <a class="nav-link text-white" href="#skills">Skills</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link text-white" href="#experience">Experience</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link text-white" href="#projects">Projects</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link text-white" href="#education">Education</a>
+                </li>
+                <li class="nav-item d-none d-md-inline">
+                  <a class="nav-link text-white" href="https://github.com/srikanth-444" target="_blank">
+                    <i class="fa fa-github"></i>
+                  </a>
+                </li>
+                <li class="nav-item d-none d-md-inline">
+                  <a class="nav-link text-white" href="https://www.linkedin.com/in/srikanth-popuri-3649a01a2/" target="_blank">
+                    <i class="fa fa-linkedin"></i>
+                  </a>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </nav>
+      </header>
     <!-- End header -->
 
     <div id="lead">
         <div id="lead-content">
             <h1>Srikanth popuri</h1>
             <h2>Master's student in Mechanical Engineering</h2>
-            <p>I see work as a cycle of testing ideas, learning from them, and iterating with purpose. It's not just about solving problems—it's about enjoying the small wins that happen along the way. Outside of technical projects, my curiosity drives me to explore new technologies and find creative ways to make a real impact.
-            </p>
-            <a href="resume/resume_software (2).pdf" class="btn-rounded-white">Download Resume</a>
+             
+            <a href="resume/resume_software (2).pdf" class="down_button">Download Resume</a>
             
         </div>
         <!-- End #lead-content -->
@@ -77,21 +126,34 @@
     </div>
     <!-- End #lead -->
 
-    <!-- <div id="about">
+    <div id="about" class="section-box">
         <div class="container">
-            <div class="row">
-                <div class="col-md-4">
+            
                     <h2 class="heading">About Me</h2>
-                </div>
-                <div class="col-md-8">
-                    <p>I see work as a cycle of testing ideas, learning from them, and iterating with purpose. It's not just about solving problems—it's about enjoying the small wins that happen along the way. Outside of technical projects, my curiosity drives me to explore new technologies and find creative ways to make a real impact.
+                
+                    <p>I am a Robotics and autonomous system enthusiast with strong foundation in Mechanical engineering, I enjoy designing systems from the ground up — from proposing architectures to integrating hardware and software for controlling the electro Mechanical Systems, My projects shows the foundational solution for complex problems, where core engineering concepts are implemented from scratch 
                     </p>
+                    </div>
+                    <div class="social">
+                        <ul>
+                            <li>
+                                <a href="https://github.com/srikanth-444" target="_blank"><i class="fa fa-github" aria-hidden="true"></i></a>
+                            </li>
+                           
+                            <li>
+                                <a href="https://www.linkedin.com/in/srikanth-popuri-3649a01a2/" target="_blank"><i class="fa fa-linkedin" aria-hidden="true"></i></a>
+                            </li>
+                            <li>
+                                <a href="https://srikanth-444.github.io/" target="_blank"><i class="fa fa-user" aria-hidden="true"></i></a>
+                            </li>
+                           
+                        </ul>
                     </div>
             </div>
         </div>
-    </div> -->
+    </div>
     <!-- End #about -->
-    <div id="skills">
+    <div id="skills" class="section-box" >
         <h2 class="heading">Skills</h2>
         <ul>
          
@@ -114,7 +176,7 @@
     </div>
     <!-- End #skills -->
 
-    <div id="experience">
+    <div id="experience" class="section-box">
         <h2 class="heading">Experience</h2>
         <div id="experience-timeline">
             <div data-date="Aug 2024 – Dec 2024">
@@ -154,31 +216,33 @@ nodes, simulating industrial automation and robotics use cases.
 
     
 
-    <div id="projects" >
+    <div id="projects" class="section-box">
         <h2 class="heading">Projects</h2>
         <div class="container">
             <div class="row">
-                <div class="project shadow-large">
+                <div class="project shadow-large col-sm-4">
+                    <div class ="row">
                     <div class="project-image">
-                        <img src="images/autonomus.jpg" />
+                        <img src="baloon_popping/cropped.jpg" width=100% />
                     </div>
                     <!-- End .project-image -->
-                    <div class="project-info">
+                    <div class=" project-info">
                         
                         <h3>Robotics and Autonomous Systems</h3>
                         <ul>
                             <li><a href="Autonomous Balloon-Popping Robot.html">Design and Implementation of an Autonomous Combat Robot</a></li>
-                        <!-- <li><a href="#">Sensor Fusion for Real-Time Localization</a></li>-->
-                            <li><a href="Autonomous Racing Vehicle.html">Autonomous Driving and Robotics (ADR) – LIDAR-Based Localization and Navigation</li>
+                            <!-- <li><a href="#">Sensor Fusion for Real-Time Localization</a></li> -->
+                            <li><a href="Autonomous Racing Vehicle.html">Autonomous Driving and Robotics (ADR) – LIDAR-Based Localization and Navigation</a></li>
                         </ul>
+                    </div>
                     </div>
                     <!-- End .project-info -->
                 </div>
                 <!-- End .project -->
 
-                <div class="project shadow-large">
+                <div class="project shadow-large col-sm-4">
                     <div class="project-image">
-                        <img src="images/vison.jpg" />
+                        <img src="multiview_images/cropped.png" width=100% />
                     </div>
                     <!-- End .project-image -->
                     <div class="project-info">
@@ -192,9 +256,9 @@ nodes, simulating industrial automation and robotics use cases.
                     <!-- End .project-info -->
                     
             </div>
-            <div class="project shadow-large">
+            <div class="project shadow-large col-sm-4">
                 <div class="project-image">
-                    <img src="images/mechanical.jpg" />
+                    <img src="images/mechanical.jpg" width=100% />
                 </div>
                 <!-- End .project-image -->
                 <div class="project-info">
@@ -210,9 +274,10 @@ nodes, simulating industrial automation and robotics use cases.
         <!-- End .project -->
         
         </div>
+        </div>
     </div>
     <!-- End #projects -->
-    <div id="education">
+    <div id="education" class="section-box">
         <h2 class="heading">Education</h2>
         <div class="education-block">
             <h3>University of Colorado Boulder</h3>
@@ -262,11 +327,11 @@ nodes, simulating industrial automation and robotics use cases.
                 <button type="submit">Send</button>
             </form>
         </div>
-        <!-- End #contact-form -->
+       End #contact-form -->
     <!-- </div>
     End #contact --> 
 
-    <footer>
+    <!-- <footer>
         <div class="container">
             <div class="row">
                 <div class="col-sm-5 copyright">
@@ -293,7 +358,7 @@ nodes, simulating industrial automation and robotics use cases.
                 </div>
             </div>
         </div>
-    </footer>
+    </footer> -->
     <!-- End footer -->
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>

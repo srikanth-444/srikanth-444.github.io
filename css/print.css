@@ -1,0 +1,56 @@
+/* ====== General Print Layout ====== */
+body {
+    font-family: "Georgia", serif;
+    font-size: 11pt;
+    color: #000;
+    background: #fff;
+    margin: 0in;
+    line-height: 1;
+  }
+  
+  /* ====== Hide non-essential elements ====== */
+  header, nav, footer, .no-print, .navbar, .footer {
+    display: none !important;
+  }
+  
+  /* ====== Prevent content from splitting across pages ====== */
+  section, article, .project, .experience, .card {
+    page-break-inside: avoid;
+    break-inside: avoid;
+    margin-bottom: 20px;
+  }
+  
+  /* ====== Control Page Breaks ====== */
+  .page-break {
+    page-break-before: always;
+    break-before: page;
+  }
+  
+  /* ====== Table and List Styling ====== */
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 1em;
+  }
+  th, td {
+    border: 1px solid #999;
+    padding: 4px 6px;
+  }
+  
+  /* ====== Headings ====== */
+  h1, h2, h3 {
+    page-break-after: avoid;
+    color: #111;
+  }
+  
+  /* ====== Remove links but keep text ====== */
+  a::after {
+    content: "";
+  }
+  
+  /* ====== Avoid orphans/widows ====== */
+  p, li {
+    orphans: 3;
+    widows: 3;
+  }
+  
