@@ -816,7 +816,7 @@ footer {
 */
 #contact {
   padding: 50px 15px;
-  background: #000000;
+  background: rgba(100, 100, 100, 0.2);
   text-align: center;
 }
 
