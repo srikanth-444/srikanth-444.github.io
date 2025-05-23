@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MCEN 5228: Project 3 - Blob The Builder</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f9;
+        }
+        header {
+            background-color: #333;
+            color: #fff;
+            padding: 1rem 0;
+            text-align: center;
+        }
+        main {
+            padding: 2rem;
+            max-width: 800px;
+            margin: auto;
+            background: #fff;
+            /* box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1); */
+            border-radius: 8px;
+        }
+        h1{
+            color: #fff;
+        }
+        h2, h3 {
+            color: #333;
+        }
+        ul {
+            margin: 1rem 0;
+            padding-left: 20px;
+        }
+        .code-link {
+            margin-top: 1rem;
+            text-align: left;
+        }
+        .code-link a {
+            color: #007BFF;
+            text-decoration: none;
+        }
+        footer {
+            text-align: center;
+            margin-top: 2rem;
+            font-size: 0.9rem;
+        }
+        
+        @media print {
+            @page {
+                margin: 0;
+                padding: 0;
+                size: A4;
+            }
+            
+          .page-break {
+            margin-top: 20px !important;
+            page-break-before: always;
+            break-before: page;
+          }
+          body {
+                font-family: "Georgia", serif;
+                font-size: 14pt;
+                color: #000;
+                background: #fff;
+                margin: 0;
+                padding: 0;
+                line-height: 1;
+            }
+        h1{
+                font-size: 24pt;
+                margin: 0;
+                padding: 0;
+                text-align: center;
+                line-height: 1;
+            
+        }
+        h2,h3 {
+                font-size: 18pt;
+                margin: 0;
+                padding: 0;
+                text-align: left;
+                line-height: 1;
+            }
+            .print-image {
+                float: right;
+                width: 100% !important;
+                margin: 10px;
+            }
+            .print-image-small {
+                float: right;
+                width: 30% !important;
+                margin: 10px;
+            }
+
+            .clear-print {
+                clear: both;
+            }
+            
+        }
+     
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Design of Ball screw Drive system</h1>
+        <p> Personal project</p>
+      
+    </header>
+
+    <main>
+        <section>
+            <h2>Overview</h2>
+            
+            <img src="baloon_popping/robot front.jpg" class="print-image-small" style="width: 100%;"/>
+            <p>
+                Proposed and led the development of an autonomous robot to identify the ballon and pop it, I defined its core architecture — including sensing, actuation, and control — and guided the integration of hardware and software. Directed The team to build a system capable of real-time navigation and precise balloon-popping.
+            </p>
+        </section>
+        <div class="clear-print"></div>
+
+        <section>
+            <h2>System Integration </h2>
+            <h3>Mechanical </h3>
+            <ul>
+            <li>Helped in modularizing the chassis to house all components, Suggested using Carter pins to ensure ease of accessibility </li>
+            <li>Suggested to Pack all electronics inside the package to avoid accidental damages to wire  </li>
+            <li>Incorporated mecanum wheels for omnidirectional movement effectively making Halonomic motion, enabling smooth navigation.</li>
+            <!-- <li>Developed two weapon systems(Credits to My Team)</li>
+                <ul>
+                <li>Lance Mechanism (Close-Range): Servo-powered scissor system with an X-Acto blade.</li>
+                <li>Disk Shooter (Long-Range): 74,000 RPM flywheel launching limonene-coated disks.</li>
+                </ul>
+            </ul> -->
+            <img src="baloon_popping/full_assembly.png" class="print-image-small"style="width:49%" />
+            <img src="baloon_popping/full_assembly_2.png" class="print-image-small" style="width:49%" />
+            <!-- <div class="clear-print"></div> -->
+            <h3 >Electronics & Sensors</h3>
+            <ul>
+                <li>Integrated Micro processor and  microcontrollers (Raspberry Pi & Arduino Mega) to handle high-level logic and motor control.</li>
+                <li>Implemented sensor fusion with</li>
+                <ul>
+                    <li>IMU for orientation and acceleration data.</li>
+                    <li>Ultrasonic sensors for obstacle detection and avoidance.</li>
+                    <li>pixy Camera for  ballon detection and tracking.</li>
+                </ul>
+            </ul>
+            <img src="baloon_popping/robot top.jpg" class="print-image-small" style="width:100%" />
+            <h3 >Software & Control</h3>
+            <ul>
+            <li>Developed Python-based control algorithms for real-time decision-making.</li>
+            <li>Implemented custom serial communication between Raspberry Pi and Arduino for efficient data transfer.</li>
+            <li>Optimized communication between Raspberry Pi and Arduino by packaging data from 4 infrared, 2 ultra sound  sensors and 1 pixy into a 3-byte payload on the Arduino (Mega), minimizing latency and ensuring efficient, low-overhead transmission.</li>
+            </ul>
+            
+            <img src="baloon_popping/integration.jpg" class="print-image" style="width:100%" />
+            <div class="clear-print"></div>
+        </section>
+
+        <section>
+            <h2>Future Challenges & solutions</h2>
+            
+            <ul>
+                <li>Advanced Localization: While The robot is equiped with optical flow sensor and IMU localization was not implemented due to time constraints</li>
+                <li>Power Optimization: Due to continous operation of motor for disk shooter we lost too much of energy making the disk spin only when it used could potention reduce the power consumption.</li>
+                <li>Enhanced Path Planning: Implementing combination of Model Predictive Control (MPC) & RRT would help in smoother navigation.</li>
+            </ul>
+
+        </section>
+        <div class="clear-print"></div>
+        <section>
+            <h2>Results & Learnings</h2>
+            <ul>
+                <li>Successfully developed a fully autonomous robot with integrated mechanical, electronic, and software systems.</li>
+                <li>Demonstrated effective real-time control</li>
+                <li>Gained hands-on experience in robotics, embedded systems, and system integration.
+                </li>
+            </ul>
+        </section>
+
+        <div class="code-link">
+            <p><a href="https://github.com/srikanth-444/Mechatronics" target="_blank">View Code on GitHub</a></p>
+            <p><a href="baloon_popping/Mechatronics (3).pdf" download>Technical Document</a></p>
+        </div>
+    </main>
+
+    <!-- <footer>
+        <p>&copy; 2025 Team Eggcelsior. All rights reserved.</p>
+    </footer> -->
+</body>
+</html>
