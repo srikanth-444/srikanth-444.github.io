@@ -116,76 +116,48 @@
         <section>
             <h2>Overview</h2>
             
-            <img src="baloon_popping/robot front.jpg" class="print-image-small" style="width: 100%;"/>
+            <img src="ball screw actuator/iso metric.png" class="print-image-small" style="width: 100%;"/>
             <p>
-                Proposed and led the development of an autonomous robot to identify the ballon and pop it, I defined its core architecture — including sensing, actuation, and control — and guided the integration of hardware and software. Directed The team to build a system capable of real-time navigation and precise balloon-popping.
+                Project involved the complete design and development of a precision linear actuator from the ground up, tailored for applications requiring accurate and repeatable linear motion. The actuator features a stepper motor-driven ball screw mechanism with a custom-machined carriage, linear guide rails, and a rigid base plate assembly.
             </p>
         </section>
         <div class="clear-print"></div>
 
         <section>
-            <h2>System Integration </h2>
+            <h2>Key objectives </h2>
             <h3>Mechanical </h3>
             <ul>
-            <li>Helped in modularizing the chassis to house all components, Suggested using Carter pins to ensure ease of accessibility </li>
-            <li>Suggested to Pack all electronics inside the package to avoid accidental damages to wire  </li>
-            <li>Incorporated mecanum wheels for omnidirectional movement effectively making Halonomic motion, enabling smooth navigation.</li>
+            <li>Designing for high positional accuracy, low backlash, and smooth travel. </li>
+            <li>Performing hand calculations to determine critical parameters such as ball screw lead, shaft diameter, critical speed, buckling load, and motor torque requirements.</li>
+            <li>Ensuring mechanical robustness through careful material selection and component sizing.</li>
             <!-- <li>Developed two weapon systems(Credits to My Team)</li>
                 <ul>
                 <li>Lance Mechanism (Close-Range): Servo-powered scissor system with an X-Acto blade.</li>
                 <li>Disk Shooter (Long-Range): 74,000 RPM flywheel launching limonene-coated disks.</li>
                 </ul>
             </ul> -->
-            <img src="baloon_popping/full_assembly.png" class="print-image-small"style="width:49%" />
-            <img src="baloon_popping/full_assembly_2.png" class="print-image-small" style="width:49%" />
+            <img src="ball screw actuator/front_view.png" class="print-image-small"style="width:49%" />
+            <img src="ball screw actuator/top_view.png" class="print-image-small" style="width:49%" />
             <!-- <div class="clear-print"></div> -->
-            <h3 >Electronics & Sensors</h3>
+            <h3 >Highlights</h3>
             <ul>
-                <li>Integrated Micro processor and  microcontrollers (Raspberry Pi & Arduino Mega) to handle high-level logic and motor control.</li>
-                <li>Implemented sensor fusion with</li>
-                <ul>
-                    <li>IMU for orientation and acceleration data.</li>
-                    <li>Ultrasonic sensors for obstacle detection and avoidance.</li>
-                    <li>pixy Camera for  ballon detection and tracking.</li>
-                </ul>
+                <li>Custom Ball screw  sizing: Hand-calculated based on Euler buckling and critical speed constraints.</li>
+                <li>Custom End Cap Recirculation For faster recirculation</li>
+                <li>Ball screw drive system: Offers high efficiency and precision over leadscrew alternatives.</li>
+                <li>Integrated linear guideway: Minimizes deflection and improves repeatability.</li>
+                <li>CAD and assembly: Fully modeled in SolidWorks with realistic motion constraints and tolerances considered.</li>
+                
             </ul>
-            <img src="baloon_popping/robot top.jpg" class="print-image-small" style="width:100%" />
-            <h3 >Software & Control</h3>
-            <ul>
-            <li>Developed Python-based control algorithms for real-time decision-making.</li>
-            <li>Implemented custom serial communication between Raspberry Pi and Arduino for efficient data transfer.</li>
-            <li>Optimized communication between Raspberry Pi and Arduino by packaging data from 4 infrared, 2 ultra sound  sensors and 1 pixy into a 3-byte payload on the Arduino (Mega), minimizing latency and ensuring efficient, low-overhead transmission.</li>
-            </ul>
-            
-            <img src="baloon_popping/integration.jpg" class="print-image" style="width:100%" />
-            <div class="clear-print"></div>
+            <img src="ball screw actuator/screw and nut.png" class="print-image-small" style="width:100%" />
+           
         </section>
 
-        <section>
-            <h2>Future Challenges & solutions</h2>
-            
-            <ul>
-                <li>Advanced Localization: While The robot is equiped with optical flow sensor and IMU localization was not implemented due to time constraints</li>
-                <li>Power Optimization: Due to continous operation of motor for disk shooter we lost too much of energy making the disk spin only when it used could potention reduce the power consumption.</li>
-                <li>Enhanced Path Planning: Implementing combination of Model Predictive Control (MPC) & RRT would help in smoother navigation.</li>
-            </ul>
+        
 
-        </section>
-        <div class="clear-print"></div>
-        <section>
-            <h2>Results & Learnings</h2>
-            <ul>
-                <li>Successfully developed a fully autonomous robot with integrated mechanical, electronic, and software systems.</li>
-                <li>Demonstrated effective real-time control</li>
-                <li>Gained hands-on experience in robotics, embedded systems, and system integration.
-                </li>
-            </ul>
-        </section>
-
-        <div class="code-link">
+        <!-- <div class="code-link">
             <p><a href="https://github.com/srikanth-444/Mechatronics" target="_blank">View Code on GitHub</a></p>
             <p><a href="baloon_popping/Mechatronics (3).pdf" download>Technical Document</a></p>
-        </div>
+        </div> -->
     </main>
 
     <!-- <footer>
