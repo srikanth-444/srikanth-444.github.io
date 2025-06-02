@@ -72,19 +72,19 @@
             <h2>Methodology</h2>
             <h3>1. Feature Matching and Outlier Rejection</h3>
             <p>Feature correspondences were refined using RANSAC, which eliminated outliers and improved robustness.</p>
-
+            <img src="3dreconstruction/1_and_2_all.jpg" class="print-image" style="width:100%" />
             <h3>2. Estimation of Fundamental and Essential Matrices</h3>
             <p>These matrices encapsulate geometric relationships between corresponding points in image pairs and were computed using the normalized 8-point algorithm and SVD.</p>
-
+            
             <h3>3. Camera Pose Estimation</h3>
             <p>Using the essential matrix, the relative rotation and translation between two views were determined. The correct pose was selected based on the cheirality condition.</p>
-
+            <img src="3dreconstruction/FourCameraPose.png" class="print-image" style="width:100%" />
             <h3>4. Triangulation</h3>
             <p>3D points were reconstructed using linear and non-linear triangulation, ensuring the points lay in front of both cameras.</p>
 
             <h3>5. Bundle Adjustment</h3>
             <p>An optimization technique was used to refine the 3D structure and camera poses by minimizing reprojection errors across all images and points.</p>
-           
+            <img src="3dreconstruction/afterallCameraProjection_2D.png" class="print-image" style="width:100%" />
 
 </style>
         </section>
